@@ -8,6 +8,8 @@ import client.{JestResult, JestClient}
 import org.elasticsearch.index.query.{QueryBuilders, QueryBuilder}
 import net.liftweb.common.Box
 import lib.DependencyFactory
+import net.liftweb.json._
+import java.util
 
 class Searcher {
 	val client: Box[JestClient] = DependencyFactory.inject[JestClient]
@@ -27,8 +29,10 @@ class Searcher {
 
 		val result: JestResult = jestClient.execute(search)
 
+		val json = parse(result.getJsonString)
+
 		<p>
-			{result.getJsonMap}
+			{ for { JField("message", JString(x)) <- json } yield <p>{x}</p> }
 		</p>
 	}
 }

@@ -20,7 +20,7 @@ class DocumentCreator {
 	doc1.put("message", "world of warcraft")
 
 	val doc2 = new util.LinkedHashMap[String, String]
-	doc1.put("message", "starcraft")
+	doc2.put("message", "starcraft")
 
 
 	def handle(in: NodeSeq): NodeSeq = {
