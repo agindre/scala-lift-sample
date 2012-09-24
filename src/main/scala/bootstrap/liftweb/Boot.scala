@@ -39,6 +39,7 @@ class Boot {
 			Menu("Home") / "index" >> User.AddUserMenusAfter, // Simple menu form
 			Menu("About") / "about",
 			Menu("Search") / "search_page",
+			Menu("DocumentCreator") / "document_creator",
 			// Menu with special Link
 			Menu(Loc("Static", Link(List("static"), true, "/static/index"),
 				"Static Content")))
