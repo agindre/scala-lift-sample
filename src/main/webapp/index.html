@@ -1,0 +1,44 @@
+<div class="lift:surround?with=base;at=container">
+    <div class="hero-unit">
+        <h2>Welcome to your project!</h2>
+
+        <p>
+
+        <div class="lift:helloWorld.howdy">
+            Welcome to scala-lift-sample at <span id="time">The current time</span>
+        </div>
+        </p>
+
+        <p>To create initial index go to Searchobox.io and signup for a free account.</p>
+
+        <p>Using your API key, create a sample index like the following:</p>
+
+        <code>
+            curl -XPUT https://api.searchbox.io/api-key/{your-api-key}/games
+        </code>
+
+        <p>Now you have created a search index with default settings. Its time to add some content:</p>
+
+        <code>
+            curl -XPUT https://api.searchbox.io/api-key/{your-api-key}/games/game/1 -d '{
+            "message": "world of warcraft"
+            }'
+        </code>
+
+        <p>Another document:</p>
+
+        <code>
+            curl -XPUT https://api.searchbox.io/api-key/{your-api-key}/games/game/2 -d '{
+            "message": "starcraft"
+            }'
+        </code>
+
+        <p>Go to search_page and put replace your API key with the dummy one in the configuration element.</p>
+        <code>'path' => 'api-key/PUT_YOUR_API_KEY_HERE/'</code>
+
+        <p>All done!</p>
+
+        <p>Now you can type '*', '*craft' , 'startcraft' or 'warcraft' to searchbox at top of right corner and hit
+            enter for sample search results.</p>
+    </div>
+</div>
