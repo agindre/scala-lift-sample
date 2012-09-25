@@ -27,11 +27,11 @@ This sample can be deployed to Heroku with no change.
 
 * Change connection string at DependencyFactory.scala
     * from
-        ``` scala
+        ```
             servers.add(System.getenv("SEARCHBOX_URL") openOr "https://api.searchbox.io/api-key/YOUR-API-KEY-HERE")
         ```
     * to
-        ```scala
+        ```
             servers.add("http://localhost:9200")
         ```
 
