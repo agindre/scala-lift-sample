@@ -17,7 +17,7 @@ object DependencyFactory extends SimpleInjector {
     // Configuration
     val clientConfig: ClientConfig = new ClientConfig()
     val servers: util.LinkedHashSet[String] = new util.LinkedHashSet[String]()
-    servers.add(System.getenv("SEARCHBOX_URL") openOr "https://api.searchbox.io/api-key/YOUR-API-KEY-HERE")
+    servers.add(if (System.getenv("SEARCHBOX_URL") != null) System.getenv("SEARCHBOX_URL") else "https://api.searchbox.io/api-key/YOUR-API-KEY-HERE")
     clientConfig.getServerProperties.put(ClientConstants.SERVER_LIST, servers)
     clientConfig.getClientFeatures.put(ClientConstants.IS_MULTI_THREADED, java.lang.Boolean.TRUE)
 
