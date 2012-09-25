@@ -1,4 +1,4 @@
-## SearchBox.io Sample Java Application.
+## SearchBox.io Sample Scala Lift Application.
 
 This example illustrates basic search features of SearchBox.io ([ElasticSearch](http://www.elasticsearch.org) as service).
 
@@ -8,7 +8,7 @@ To create initial index and sample data click "Create Documents" (2 sample artic
 
 To test search; enter "starcraft", "war*" or "*" to search box at top right and hit enter.
 
-## Using Directly with SearchBox.io
+## Using with SearchBox.io
 
 * Sign Up and get your API-KEY from [here](https://searchbox.io/users/sign_up).
 * Replace "YOUR-API-KEY-HERE" with your API-KEY at DependencyFactory.scala
