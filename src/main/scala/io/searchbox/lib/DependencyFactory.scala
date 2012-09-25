@@ -10,26 +10,23 @@ import client.{JestClient, JestClientFactory}
 
 object DependencyFactory extends SimpleInjector {
 
-	// register the function that builds JestClient
-	DependencyFactory.registerInjection(buildOne _)
+  // register the function that builds JestClient
+  DependencyFactory.registerInjection(buildOne _)
 
-	def buildOne(): JestClient = {
-		// Configuration
-		val clientConfig: ClientConfig = new ClientConfig()
-		val servers: util.LinkedHashSet[String] = new util.LinkedHashSet[String]()
-		servers.add("https://api.searchbox.io/api-key/PUT_YOUR_API_KEY_HERE")
-		clientConfig.getServerProperties().put(ClientConstants.SERVER_LIST, servers)
-		clientConfig.getClientFeatures().put(ClientConstants.IS_MULTI_THREADED,java.lang.Boolean.TRUE)
+  def buildOne(): JestClient = {
+    // Configuration
+    val clientConfig: ClientConfig = new ClientConfig()
+    val servers: util.LinkedHashSet[String] = new util.LinkedHashSet[String]()
+    servers.add(System.getenv("SEARCHBOX_URL") openOr "https://api.searchbox.io/api-key/YOUR-API-KEY-HERE")
+    clientConfig.getServerProperties.put(ClientConstants.SERVER_LIST, servers)
+    clientConfig.getClientFeatures.put(ClientConstants.IS_MULTI_THREADED, java.lang.Boolean.TRUE)
 
-		// Construct a new Jest client according to configuration via factory
-		val factory: JestClientFactory = new JestClientFactory()
-		factory.setClientConfig(clientConfig)
-		val client: JestClient = factory.getObject()
-		client
-	}
-
-
-
+    // Construct a new Jest client according to configuration via factory
+    val factory: JestClientFactory = new JestClientFactory()
+    factory.setClientConfig(clientConfig)
+    val client: JestClient = factory.getObject
+    client
+  }
 }
 
 }

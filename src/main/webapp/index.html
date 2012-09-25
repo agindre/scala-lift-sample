@@ -1,60 +1,27 @@
 <div class="lift:surround?with=base;at=container">
-    <div class="hero-unit">
-        <h2>Welcome to your project!</h2>
+    <div class="row">
+        <div class="span12">
+            <div class="hero-unit">
+                <h1>
+                    SearchBox.io Sample Scala Lift Application.</h1>
+                <br/>
 
-        <p>To create initial index go to SearchBox.io and signup for an account.</p>
+                <p>
+                    This example illustrates basic search features of <a href="http://www.searchbox.io">SearchBox.io</a> (ElasticSearch as
+                    service).</p>
 
-        <p>Go to Searcher Snippet and replace your API key with the dummy one in the configuration element.</p>
-        <code>'servers.add("https://api.searchbox.io/api-key/PUT_YOUR_API_KEY_HERE")'</code>
+                <p>Click "Create Documents" on top menu, 2 sample articles will be created. </p>
 
-        <p>Using your API key, create a sample index like the following:</p>
+                <p>To test search; enter "starcraft", "war*" or "*" to search box at top right and hit enter. </p>
 
-        <code>
-            curl -XPUT https://api.searchbox.io/api-key/{your-api-key}/games
-        </code>
+                <p>
+                    Sample application is using <a href="https://github.com/searchbox-io/Jest">Jest</a> Java/Scala ElasticSearch
+                    client
+                    to
+                    integrate with SearchBox.io.
+                </p>
 
-        <br></br>
-
-        <div class="form">
-            <a href="/document_creator?op=index">Or Click Here</a>
+            </div>
         </div>
-
-        <br></br>
-
-        <p>Now you have created a search index with default settings. Its time to add some content:</p>
-
-        <code>
-            curl -XPUT https://api.searchbox.io/api-key/{your-api-key}/games/game/1 -d '{
-            "message": "world of warcraft"
-            }'
-        </code>
-
-        <br></br>
-
-        <div class="form">
-            <a href="/document_creator?op=doc1">Or Click Here</a>
-        </div>
-
-        <br></br>
-
-        <p>Another document:</p>
-
-        <code>
-            curl -XPUT https://api.searchbox.io/api-key/{your-api-key}/games/game/2 -d '{
-            "message": "starcraft"
-            }'
-        </code>
-
-        <br></br>
-
-        <div class="form">
-            <a href="/document_creator?op=doc2">Or Click Here</a>
-        </div>
-        <br></br>
-
-        <p>All done!</p>
-
-        <p>Now you can type '*', '*craft' , 'startcraft' or 'warcraft' to searchbox at top of right corner and hit
-            enter for sample search results.</p>
     </div>
 </div>

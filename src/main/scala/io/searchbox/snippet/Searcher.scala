@@ -31,9 +31,9 @@ class Searcher {
 
 		val json = parse(result.getJsonString)
 
-		<p>
-			{ for { JField("message", JString(x)) <- json } yield <p>{x}</p> }
-		</p>
+			{ for {  JObject(child) <- json
+               JField("name", JString(name)) <- child
+              JField("description", JString(description)) <- child} yield <tr><td>{name}</td><td>{description}</td></tr> }
 	}
 }
 
