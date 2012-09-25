@@ -26,9 +26,8 @@ This sample can be deployed to Heroku with no change.
 ## Local Setup
 
 * Change connection string at DependencyFactory.scala
-
-from servers.add(System.getenv("SEARCHBOX_URL") openOr "https://api.searchbox.io/api-key/YOUR-API-KEY-HERE")
-to servers.add("http://localhost:9200")
+    * from servers.add(System.getenv("SEARCHBOX_URL") openOr "https://api.searchbox.io/api-key/YOUR-API-KEY-HERE")
+    * to servers.add("http://localhost:9200")
 
 To run example in your local environment with a local ElasticSearch instance via maven;
 
