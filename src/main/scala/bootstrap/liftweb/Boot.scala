@@ -18,25 +18,13 @@ import _root_.io.searchbox.model._
  */
 class Boot {
 	def boot {
-		if (!DB.jndiJdbcConnAvailable_?) {
-			val vendor =
-				new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
-					Props.get("db.url") openOr
-						"jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE",
-					Props.get("db.user"), Props.get("db.password"))
-
-			LiftRules.unloadHooks.append(vendor.closeAllConnections_! _)
-
-			DB.defineConnectionManager(DefaultConnectionIdentifier, vendor)
-		}
 
 		// where to search snippet
 		LiftRules.addToPackages("io.searchbox")
-		Schemifier.schemify(true, Schemifier.infoF _, User)
 
 		// Build SiteMap
 		def sitemap() = SiteMap(
-			Menu("Home") / "index" >> User.AddUserMenusAfter, // Simple menu form
+			Menu("Home") / "index",
 			Menu("About") / "about",
 			Menu("Search") / "search_page",
 			Menu("DocumentCreator") / "document_creator",
@@ -44,7 +32,7 @@ class Boot {
 			Menu(Loc("Static", Link(List("static"), true, "/static/index"),
 				"Static Content")))
 
-		LiftRules.setSiteMapFunc(() => User.sitemapMutator(sitemap()))
+		LiftRules.setSiteMapFunc(() => sitemap())
 
 		/*
 						 * Show the spinny image when an Ajax call starts
@@ -59,10 +47,6 @@ class Boot {
 			Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
 
 		LiftRules.early.append(makeUtf8)
-
-		LiftRules.loggedInTest = Full(() => User.loggedIn_?)
-
-		S.addAround(DB.buildLoanWrapper)
 	}
 
 	/**
