@@ -6,7 +6,7 @@ Sample application is using [Jest](https://github.com/searchbox-io/Jest) Java/Sc
 
 To create initial index and sample data click "Create Documents" (2 sample articles will be created.)
 
-To test search; enter "starcraft", "war*" or "*" to search box at top right and hit enter.
+To test search; enter "starcraft", "warcraft" or "*" to search box at top right and hit enter.
 
 ## Using with SearchBox.io
 
