@@ -5,6 +5,7 @@ import net.liftweb._
 import util._
 import client.config.{ClientConstants, ClientConfig}
 import java.util
+import scala.util.Properties
 import client.{JestClient, JestClientFactory}
 
 
@@ -17,7 +18,7 @@ object DependencyFactory extends SimpleInjector {
     // Configuration
     val clientConfig: ClientConfig = new ClientConfig()
     val servers: util.LinkedHashSet[String] = new util.LinkedHashSet[String]()
-    servers.add(if (System.getenv("SEARCHBOX_URL") != null) System.getenv("SEARCHBOX_URL") else "https://api.searchbox.io/api-key/YOUR-API-KEY-HERE")
+    servers.add(Properties.envOrElse("SEARCHBOX_URL", "https://api.searchbox.io/api-key/YOUR-API-KEY-HERE"))
     clientConfig.getServerProperties.put(ClientConstants.SERVER_LIST, servers)
     clientConfig.getClientFeatures.put(ClientConstants.IS_MULTI_THREADED, java.lang.Boolean.TRUE)
 
