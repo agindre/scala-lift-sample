@@ -28,7 +28,7 @@ This sample can be deployed to Heroku with no change.
 * Change connection string at DependencyFactory.scala
     * from
         ```
-            servers.add(if (System.getenv("SEARCHBOX_URL") != null) System.getenv("SEARCHBOX_URL") else "https://api.searchbox.io/api-key/YOUR-API-KEY-HERE")
+            servers.add(Properties.envOrElse("SEARCHBOX_URL", "https://api.searchbox.io/api-key/YOUR-API-KEY-HERE"))
         ```
     * to
         ```
